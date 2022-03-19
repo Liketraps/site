@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="en" class=" theme-black">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="theme-color" content="#1f1f1f" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, viewport-fit=cover" />
+    <title>nHentai Viewer</title>
+    <script type="text/javascript" src="data.js"></script>
+        <!-- <link rel="stylesheet" href="./main.css"> -->
+<style>
+/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+/* Original from https://static.nhentai.net/css/main_style.9bb9b703e601.css */
+a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects
+}
+
+img {
+    border-style: none
+}
+
+html {
+    box-sizing: border-box
+}
+
+*,:after,:before {
+    box-sizing: inherit
+}
+
+body,html {
+    font-family: 'Noto Sans',sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    height: 100%;
+    margin: 0;
+    text-align: center;
+    color: #34495e;
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+a {
+    text-decoration: none;
+    color: #34495e
+}
+
+blockquote {
+    border: 0
+}
+
+.container {
+    display: block;
+    clear: both;
+    margin-left: 15rem;
+    margin-right: 0.5rem;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 4px;
+    border-radius: 9px;
+    background-color: #ecf0f1;
+    width: 100% - 15rem;
+    max-width: 1500px
+}
+
+.gallery,.gallery-favorite,.thumb-container {
+    display: inline-block;
+    vertical-align: top
+}
+
+.gallery img,.gallery-favorite img,.thumb-container img {
+    display: block;
+    max-width: 100%;
+    height: auto
+}
+
+@media screen and (min-width: 980px) {
+    .gallery,.gallery-favorite,.thumb-container {
+        width:19%;
+        margin: 3px;
+    }
+}
+
+@media screen and (max-width: 979px) {
+    .gallery,.gallery-favorite,.thumb-container {
+        width:24%;
+        margin: 2px
+    }
+}
+
+@media screen and (max-width: 772px) {
+    .gallery,.gallery-favorite,.thumb-container {
+        width:32%;
+        margin: 1.5px
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .gallery,.gallery-favorite,.thumb-container {
+        width:49%;
+        margin: .5px
+    }
+}
+
+.gallery a,.gallery-favorite a {
+    display: block
+}
+
+.gallery a img,.gallery-favorite a img {
+    position: absolute
+}
+
+.caption {
+    line-height: 15px;
+    left: 0;
+    right: 0;
+    top: 100%;
+    position: absolute;
+    z-index: 10;
+    overflow: hidden;
+    width: 100%;
+    max-height: 34px;
+    padding: 3px;
+    background-color: #fff;
+    font-weight: 700;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #34495e
+}
+
+.gallery {
+    position: relative;
+    margin-bottom: 3em
+}
+
+.gallery:hover .caption {
+    max-height: 100%;
+    box-shadow: 0 10px 20px rgba(100,100,100,.5)
+}
+
+.gallery-favorite .gallery {
+    width: 100%
+}
+
+.sidenav {
+  height: 100%;
+  width: 15rem;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #0d0d0d;
+  overflow: hidden;
+
+  padding-top: 20px;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.sidenav a {
+  background-color: #eee;
+  padding: 5px 0px 5px 15px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #0d0d0d;
+  display: block;
+  text-align: left;
+}
+.sidenav img {
+	width:100%;
+	padding: 0px 5px 0px 5px;
+
+}
+
+.sidenav h1 {
+    font-size: 1.5em;
+	margin: 0px 0px 10px;
+}
+
+.sidenav a:hover {
+  color: white;
+  background-color: #EC2754;
+}
+
+.accordion {
+  font-weight: bold;
+  background-color: #eee;
+  color: #444;
+  padding: 10px 0px 5px 8px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  cursor:pointer;
+}
+
+.accordion:hover {
+  background-color: #ddd;
+}
+
+.accordion.active{
+  background-color:#ddd;
+}
+
+.nav-btn {
+  font-weight: bold;
+  background-color: #eee;
+  color: #444;
+  padding: 8px 8px 5px 9px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.hidden {
+  display:none;
+}
+
+.nav-btn a{
+  font-weight: normal;
+  padding-right: 10px;
+  border-radius: 15px;
+  cursor: crosshair
+}
+
+.options {
+  display:block;
+  padding: 0px 0px 0px 0px;
+  background-color: #eee;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  cursor:pointer;
+}
+
+.search{
+  background-color: #eee;
+  padding-right:40px;
+  white-space: nowrap;
+  padding-top: 5px;
+  height:43px;
+
+}
+
+.search input{
+  border-top-right-radius:10px;
+  padding-top:0;
+  padding-bottom:0;
+  font-size:1em;
+  width:100%;
+  height:38px;
+  vertical-align:top;
+}
+
+.btn{
+  border-top-left-radius:10px;
+  color:#fff;
+  font-size:100%;
+  padding: 8px;
+  width:38px;
+  background-color:#ed2553;
+}
+
+#tags{
+    text-align:left;
+    display: flex;
+	width:15rem;
+    justify-content: start;
+	margin: 2px 2px 2px 0px;
+	flex-wrap: wrap;
+}
+
+.btn-2{
+  font-weight:700;
+  padding-right:0.5rem;
+  padding-left:0.5rem;
+  color:#fff;
+  border:0;
+  font-size:100%;
+  height:1.25rem;
+  outline: 0;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin:0.15rem;
+  transition: all 1s linear;
+}
+
+.btn-2#parody{
+  background-color: red;
+}
+
+.btn-2#character{
+  background-color: blue;
+}
+
+.btn-2#tag{
+  background-color: green;
+}
+
+.btn-2#artist{
+  background-color: fuchsia;
+}
+
+.btn-2#group{
+  background-color: teal;
+}
+
+.btn-2.hover{
+  filter: saturate(20%)
+}
+
+input,input:focus{
+  border:none;
+  outline:0;
+}
+
+html.theme-black,html.theme-black body {
+    color: #d9d9d9;
+    background-color: #0d0d0d
+}
+
+html.theme-black #thumbnail-container,html.theme-black .container {
+    background-color: #1f1f1f
+}
+
+html.theme-black .gallery:hover .caption {
+    box-shadow: 0 10px 20px rgba(0,0,0,.5)
+}
+
+html.theme-black .caption {
+    background-color: #404040;
+    color: #d9d9d9
+}
+
+</style>
+</head>
+
+<body>
+    <div id="content">
+        <nav class="sidenav">
+			<img src="logo.png">
+			<h1>nHentai Viewer</h1>
+                        <button class="accordion">Language</button>
+            <div class="options" id="language">
+                    <a>English</a>
+                    <a>Japanese</a>
+                    <a>Chinese</a>
+            </div>
+			<button class="accordion">Category</button>
+            <div class="options" id ="category">
+                    <a>Doujinshi</a>
+                    <a>Manga</a>
+            </div>
+			<button class="nav-btn hidden">Filters</button>
+			<div class="search">
+				<input autocomplete="off" type="search" id="tagfilter" name="q" value="" autocapitalize="none" required="">
+				<svg class="btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="white" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+			<div id="tags">
+			</div>
+		</nav>
+        <div class="container" id="favcontainer">
+
+            
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[390954][blade][(C99) [Lovewn Outpost (BLADE)] Mora Katsu Mora Life (Genshin Impact) [English] [Coff…/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[390954][blade][(C99) [Lovewn Outpost (BLADE)] Mora Katsu Mora Life (Genshin Impact) [English] [Coff…/001.jpg" />
+                        <div class="caption">[390954][blade][(C99) [Lovewn Outpost (BLADE)] Mora Katsu Mora Life (Genshin Impact) [English] [Coff…</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[352533][aoin][[Aion no Junreibi (Aoin)] Ornamented Nightmare (Bloodborne) [English]]/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[352533][aoin][[Aion no Junreibi (Aoin)] Ornamented Nightmare (Bloodborne) [English]]/001.jpg" />
+                        <div class="caption">[352533][aoin][[Aion no Junreibi (Aoin)] Ornamented Nightmare (Bloodborne) [English]]</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[351814][danimaru][[Danimaru] Suteneko Kanojo Abandoned Cat Girlfriend (COMIC Anthurium 2021-02) [En…/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[351814][danimaru][[Danimaru] Suteneko Kanojo Abandoned Cat Girlfriend (COMIC Anthurium 2021-02) [En…/001.jpg" />
+                        <div class="caption">[351814][danimaru][[Danimaru] Suteneko Kanojo Abandoned Cat Girlfriend (COMIC Anthurium 2021-02) [En…</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[234744][aoin][(FF31) [Aoinhatsu (Aoin)] A29S2B (NieR Automata) [English] {Hennojin}]/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[234744][aoin][(FF31) [Aoinhatsu (Aoin)] A29S2B (NieR Automata) [English] {Hennojin}]/001.jpg" />
+                        <div class="caption">[234744][aoin][(FF31) [Aoinhatsu (Aoin)] A29S2B (NieR Automata) [English] {Hennojin}]</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[370913][danimaru][[Danimaru] Futagomori Twins in Heat (COMIC Anthurium 2021-08) [English] [INSURREC…/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[370913][danimaru][[Danimaru] Futagomori Twins in Heat (COMIC Anthurium 2021-08) [English] [INSURREC…/001.jpg" />
+                        <div class="caption">[370913][danimaru][[Danimaru] Futagomori Twins in Heat (COMIC Anthurium 2021-08) [English] [INSURREC…</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[354767][danimaru][[Danimaru] Hajirai Change Bashful Change (COMIC Anthurium 2020-08) [English] [Nis…/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[354767][danimaru][[Danimaru] Hajirai Change Bashful Change (COMIC Anthurium 2020-08) [English] [Nis…/001.jpg" />
+                        <div class="caption">[354767][danimaru][[Danimaru] Hajirai Change Bashful Change (COMIC Anthurium 2020-08) [English] [Nis…</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[392060][aoin][[Aoin no Junreibi (Aoin)] The Escort and the Flower Girl (Final Fantasy) [English]]/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[392060][aoin][[Aoin no Junreibi (Aoin)] The Escort and the Flower Girl (Final Fantasy) [English]]/001.jpg" />
+                        <div class="caption">[392060][aoin][[Aoin no Junreibi (Aoin)] The Escort and the Flower Girl (Final Fantasy) [English]]</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[353378][momosawa][[Wasabi Mochi (Momosawa)] Keqing-chan ga Buka o Shigoki Makuru Hon A Book In Whic…/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[353378][momosawa][[Wasabi Mochi (Momosawa)] Keqing-chan ga Buka o Shigoki Makuru Hon A Book In Whic…/001.jpg" />
+                        <div class="caption">[353378][momosawa][[Wasabi Mochi (Momosawa)] Keqing-chan ga Buka o Shigoki Makuru Hon A Book In Whic…</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[358457][danimaru][[Danimaru] Taimashi ni Nante Makenai! (COMIC HOTMILK 2020-06) [English] [Digital]…/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[358457][danimaru][[Danimaru] Taimashi ni Nante Makenai! (COMIC HOTMILK 2020-06) [English] [Digital]…/001.jpg" />
+                        <div class="caption">[358457][danimaru][[Danimaru] Taimashi ni Nante Makenai! (COMIC HOTMILK 2020-06) [English] [Digital]…</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[378356][nekone][[Nekone] Ganyu s Sweet Dream v2 (Genshin Impact) (Animated) [English]]/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[378356][nekone][[Nekone] Ganyu s Sweet Dream v2 (Genshin Impact) (Animated) [English]]/001.gif" />
+                        <div class="caption">[378356][nekone][[Nekone] Ganyu s Sweet Dream v2 (Genshin Impact) (Animated) [English]]</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[364591][p senpuki][[K2 Manhole (P)] ASSTROLOGIC (Genshin Impact) [English] [Viriel Scans] [Digital]…/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[364591][p senpuki][[K2 Manhole (P)] ASSTROLOGIC (Genshin Impact) [English] [Viriel Scans] [Digital]…/001.jpg" />
+                        <div class="caption">[364591][p senpuki][[K2 Manhole (P)] ASSTROLOGIC (Genshin Impact) [English] [Viriel Scans] [Digital]…</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[356868][aoin][(FF37) [Aoin no Junreibi (Aoin)] DEPENDENCE (Yukihana Lamy Omaru Polka) [English]]/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[356868][aoin][(FF37) [Aoin no Junreibi (Aoin)] DEPENDENCE (Yukihana Lamy Omaru Polka) [English]]/001.jpg" />
+                        <div class="caption">[356868][aoin][(FF37) [Aoin no Junreibi (Aoin)] DEPENDENCE (Yukihana Lamy Omaru Polka) [English]]</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[247426][aoin][(C94) [Aoin no Junreibi (AOIN)] Dark Desire (DARK SOULS III) [English] =TLL + mrwayne…/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[247426][aoin][(C94) [Aoin no Junreibi (AOIN)] Dark Desire (DARK SOULS III) [English] =TLL + mrwayne…/001.jpg" />
+                        <div class="caption">[247426][aoin][(C94) [Aoin no Junreibi (AOIN)] Dark Desire (DARK SOULS III) [English] =TLL + mrwayne…</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[247816][aoin][[Aoinhatsu (Aoin)] 2B9S (NieR Automata) [English] [Thot Patrol]]/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[247816][aoin][[Aoinhatsu (Aoin)] 2B9S (NieR Automata) [English] [Thot Patrol]]/001.jpg" />
+                        <div class="caption">[247816][aoin][[Aoinhatsu (Aoin)] 2B9S (NieR Automata) [English] [Thot Patrol]]</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[322665][taira tsukune][[ROUTE1 (Taira Tsukune)] Jirettai 2-gil Remake Tantalizing 2 Gil REMAKE (Fin…/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[322665][taira tsukune][[ROUTE1 (Taira Tsukune)] Jirettai 2-gil Remake Tantalizing 2 Gil REMAKE (Fin…/001.jpg" />
+                        <div class="caption">[322665][taira tsukune][[ROUTE1 (Taira Tsukune)] Jirettai 2-gil Remake Tantalizing 2 Gil REMAKE (Fin…</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[246692][aoin][[Aoin no Junreibi (Aoin)] 9S2B (NieR Automata) [English] [Thot Patrol]]/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[246692][aoin][[Aoin no Junreibi (Aoin)] 9S2B (NieR Automata) [English] [Thot Patrol]]/001.jpg" />
+                        <div class="caption">[246692][aoin][[Aoin no Junreibi (Aoin)] 9S2B (NieR Automata) [English] [Thot Patrol]]</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[360436][danimaru][[Danimaru] Himitsu no Haishin (COMIC HOTMILK 2021-03) [English] [PPScans] [Digita…/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[360436][danimaru][[Danimaru] Himitsu no Haishin (COMIC HOTMILK 2021-03) [English] [PPScans] [Digita…/001.jpg" />
+                        <div class="caption">[360436][danimaru][[Danimaru] Himitsu no Haishin (COMIC HOTMILK 2021-03) [English] [PPScans] [Digita…</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[364305][lengsediaokafei][[Cold Blend Coffee] The First Archon Part 1-3 (Genshin Impact) [English] […/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[364305][lengsediaokafei][[Cold Blend Coffee] The First Archon Part 1-3 (Genshin Impact) [English] […/001.jpg" />
+                        <div class="caption">[364305][lengsediaokafei][[Cold Blend Coffee] The First Archon Part 1-3 (Genshin Impact) [English] […</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[363030][xin obiwan][[Moe Hime Rengou (xin obiwan)] Carnival 33 - Coconut Hitsuji no Milk o Nondara …/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[363030][xin obiwan][[Moe Hime Rengou (xin obiwan)] Carnival 33 - Coconut Hitsuji no Milk o Nondara …/001.jpg" />
+                        <div class="caption">[363030][xin obiwan][[Moe Hime Rengou (xin obiwan)] Carnival 33 - Coconut Hitsuji no Milk o Nondara …</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[204613][tachibana omina][[Shimapan (Tachibana Omina)] P5 Harem ~Futaba Edition~ (Persona 5) [Englis…/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[204613][tachibana omina][[Shimapan (Tachibana Omina)] P5 Harem ~Futaba Edition~ (Persona 5) [Englis…/001.jpg" />
+                        <div class="caption">[204613][tachibana omina][[Shimapan (Tachibana Omina)] P5 Harem ~Futaba Edition~ (Persona 5) [Englis…</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[385123][mimonel][[Mimonel] Joker s Stylish Night (Persona 5)]/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[385123][mimonel][[Mimonel] Joker s Stylish Night (Persona 5)]/001.jpg" />
+                        <div class="caption">[385123][mimonel][[Mimonel] Joker s Stylish Night (Persona 5)]</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[343803][92m][[92M] Kanu-chan ni Amaeru o Manga Fawning on Ganyu (Genshin Impact) [English]]/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[343803][92m][[92M] Kanu-chan ni Amaeru o Manga Fawning on Ganyu (Genshin Impact) [English]]/001.jpg" />
+                        <div class="caption">[343803][92m][[92M] Kanu-chan ni Amaeru o Manga Fawning on Ganyu (Genshin Impact) [English]]</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[383632][danimaru][[Kakurenbo (Danimaru)] Batsu Game de Onee-san to A Dare with an Older Girl (Amaya…/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[383632][danimaru][[Kakurenbo (Danimaru)] Batsu Game de Onee-san to A Dare with an Older Girl (Amaya…/001.jpg" />
+                        <div class="caption">[383632][danimaru][[Kakurenbo (Danimaru)] Batsu Game de Onee-san to A Dare with an Older Girl (Amaya…</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[370517][danimaru][[Danimaru] Boku wa Umeda-san ni Sakaraenai I Can t Go Against Umeda-san (COMIC An…/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[370517][danimaru][[Danimaru] Boku wa Umeda-san ni Sakaraenai I Can t Go Against Umeda-san (COMIC An…/001.jpg" />
+                        <div class="caption">[370517][danimaru][[Danimaru] Boku wa Umeda-san ni Sakaraenai I Can t Go Against Umeda-san (COMIC An…</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[372507][uran][(SC2021 Summer) [URAN-FACTORY (URAN)] Senjuu no Yurameki The shimmer of the sacred be…/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[372507][uran][(SC2021 Summer) [URAN-FACTORY (URAN)] Senjuu no Yurameki The shimmer of the sacred be…/001.jpg" />
+                        <div class="caption">[372507][uran][(SC2021 Summer) [URAN-FACTORY (URAN)] Senjuu no Yurameki The shimmer of the sacred be…</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[352868][aoin][[Aoin no Junreibi (Aoin)] Orange Sunshine [English] [NAMKOOH] [Digital]]/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[352868][aoin][[Aoin no Junreibi (Aoin)] Orange Sunshine [English] [NAMKOOH] [Digital]]/001.jpg" />
+                        <div class="caption">[352868][aoin][[Aoin no Junreibi (Aoin)] Orange Sunshine [English] [NAMKOOH] [Digital]]</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-favorite">
+                <div class="gallery">
+                    <a href="./[395941][naha 78 nana g][[Salt choc (Nana G)] Konna Koto Suru no Kimi ni dake nan dakara Doing This …/index.html" class="cover" style="padding:0 0 141.6% 0"><img
+                            src="./[395941][naha 78 nana g][[Salt choc (Nana G)] Konna Koto Suru no Kimi ni dake nan dakara Doing This …/001.jpg" />
+                        <div class="caption">[395941][naha 78 nana g][[Salt choc (Nana G)] Konna Koto Suru no Kimi ni dake nan dakara Doing This …</div>
+                    </a>
+                </div>
+            </div>
+
+
+        </div> <!-- container -->
+
+    </div>
+<script>
+        //------------------------------------navbar script------------------------------------
+var menu = document.getElementsByClassName("accordion");
+for (var i = 0; i < menu.length; i++) {
+  menu[i].addEventListener("click", function() {
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+	  this.classList.toggle("active");
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+	  this.classList.toggle("active");
+    }
+  });
+}
+var language = document.getElementById("language").children;
+for (var i = 0; i < language.length; i++){
+	language[i].addEventListener("click", function() {
+		toggler = document.getElementById("language")
+		toggler.style.maxHeight = null;
+		document.getElementsByClassName("accordion")[0].classList.toggle("active");
+		filter_maker(this.innerText, "language");
+});
+}
+var category = document.getElementById("category").children;
+for (var i = 0; i < category.length; i++){
+	category[i].addEventListener("click", function() {
+		document.getElementById("category").style.maxHeight = null;
+		document.getElementsByClassName("accordion")[1].classList.toggle("active");
+		filter_maker(this.innerText, "category");
+});
+}
+//-----------------------------------------------------------------------------------
+//----------------------------------Tags Script--------------------------------------
+tag_maker(tags);
+
+var tag = document.getElementsByClassName("btn-2");
+for (var i = 0; i < tag.length; i++){
+	tag[i].addEventListener("click", function() {
+	filter_maker(this.innerText, this.id);
+});
+}
+
+var input = document.getElementById("tagfilter");
+input.addEventListener("input", function() {
+	var tags = document.querySelectorAll(".btn-2");
+	if (this.value.length > 0) {
+        for (var i = 0; i < tags.length; i++) {
+            var tag = tags[i];
+            var nome = tag.innerText;
+            var exp = new RegExp(this.value, "i");;
+            if (exp.test(nome)) {
+                tag.classList.remove("hidden");
+		    }
+			else {
+				tag.classList.add("hidden");
+            }
+        }
+    } else {
+        for (var i = 0; i < tags.length; i++) {
+            var tag = tags[i];
+				tag.classList.add('hidden');
+        }
+    }
+});
+input.addEventListener('keypress', function (e) {
+	enter_search(e, this.value);
+});
+//-----------------------------------------------------------------------------------
+//------------------------------------Functions--------------------------------------
+function enter_search(e, input){
+	var count = 0;
+	var key = e.which || e.keyCode;
+	if (key === 13 && input.length > 0) {
+	  var all_tags = document.getElementById("tags").children;
+	  for(i = 0; i < all_tags.length; i++){
+		if (!all_tags[i].classList.contains("hidden")){
+			count++;
+			var tag_name = all_tags[i].innerText;
+			var tag_id   = all_tags[i].id;
+			if (count>1){break}
+		}
+	  }
+	  if (count == 1){
+		filter_maker(tag_name, tag_id);
+	  }
+	}
+}
+function filter_maker(text, class_value){
+    var check = filter_checker(text);
+	var nav_btn = document.getElementsByClassName("nav-btn")[0];
+	if (nav_btn.classList.contains("hidden")){
+	  nav_btn.classList.toggle("hidden");
+	}
+	if (check == true){
+		var node = document.createElement("a");
+		var textnode = document.createTextNode(text);
+		node.appendChild(textnode);
+		node.classList.add(class_value);
+		nav_btn.appendChild(node);
+		filter_searcher();
+	}
+}
+
+function filter_searcher(){
+	var verifier = null;
+	var tags_filter = [];
+	var doujinshi_id = [];
+	var filter_tag = document.getElementsByClassName("nav-btn")[0].children;
+	filter_tag[filter_tag.length-1].addEventListener("click", function() {
+		this.remove();
+		try{
+			filter_searcher();
+		}
+		catch{
+			var gallery = document.getElementsByClassName("gallery-favorite");
+			for (var i = 0; i < gallery.length; i++){
+				gallery[i].classList.remove("hidden");
+			}
+		}
+	});
+	for (var i=0; i < filter_tag.length; i++){
+		var fclass = filter_tag[i].className;
+		var fname = filter_tag[i].innerText.toLowerCase();
+		tags_filter.push([fclass, fname])
+	}
+	for (var i=0; i < data.length; i++){
+		for (var j=0; j < tags_filter.length; j++){
+			try{
+				if(data[i][tags_filter[j][0]].includes(tags_filter[j][1])){
+					verifier = true;
+				}
+				else{
+					verifier = false;
+					break
+				}
+			}
+			catch{
+				verifier = false;
+					break
+			}
+		}
+		if (verifier){doujinshi_id.push(data[i].Folder);}
+	}
+	var gallery = document.getElementsByClassName("gallery-favorite");
+	for (var i = 0; i < gallery.length; i++){
+		gtext = gallery	[i].children[0].children[0].children[1].innerText;
+		if(doujinshi_id.includes(gtext)){
+			gallery[i].classList.remove("hidden");
+		}
+		else{
+		gallery[i].classList.add("hidden");
+		}
+	}
+}
+
+function filter_checker(text){
+    var filter_tags = document.getElementsByClassName("nav-btn")[0].children;
+	if (filter_tags == null){return true;}
+	for (var i=0; i < filter_tags.length; i++){
+		if (filter_tags[i].innerText == text){return false;}
+	}
+	return true;
+}
+
+function tag_maker(data){
+	for (i in data){
+		for (j in data[i]){
+			var node = document.createElement("button");
+			var textnode = document.createTextNode(data[i][j]);
+			node.appendChild(textnode);
+			node.classList.add("btn-2");
+			node.setAttribute('id', i);
+			node.classList.add("hidden");
+			document.getElementById("tags").appendChild(node);
+		}
+	}
+}
+</script>
+</body>
+
+</html>
